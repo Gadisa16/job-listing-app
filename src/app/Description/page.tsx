@@ -8,20 +8,44 @@ import MoreTimeOutlinedIcon from '@mui/icons-material/MoreTimeOutlined';
 import TimerOffOutlinedIcon from '@mui/icons-material/TimerOffOutlined';
 import TodayOutlinedIcon from '@mui/icons-material/TodayOutlined';
 import EventAvailableOutlinedIcon from '@mui/icons-material/EventAvailableOutlined';
+
+interface Responsibilities {
+  responsibilities: string[];
+}
+
+interface IdealCandidate {
+  age: string;
+  gender: string;
+  traits: string[];
+}
+
+interface About {
+  posted_on: string;
+  deadline: string;
+  location: string;
+  start_date: string;
+  end_date: string;
+  categories: string[];
+  required_skills: string[];
+}
+
 interface JobPosting {
   id: number;
   title: string;
   company: string;
-  about: {
-    location: string;
-  };
   description: string;
+  responsibilities: string[];
+  ideal_candidate: IdealCandidate;
+  when_where: string;
+  about: About;
 }
 
-// Define the structure of the entire jobs data
 interface JobsData {
   job_postings: JobPosting[];
 }
+
+const jobsData = data as JobsData;
+
 
 function Description() {
   const searchParams = useSearchParams();
@@ -53,7 +77,7 @@ function Description() {
         <div className='my-10'>
           <p className="text-[#25324B] font-poppins text-[24px] font-black leading-[28.8px] text-left pb-5">Responsibilities</p>
           <ul className="text-[#25324B] font-epilogue text-[16px] font-normal leading-[28px] text-left">
-            {job?.responsibilities.map((responsibility, index) => (
+            {job.responsibilities.map((responsibility, index) => (
               <li key={index}><AddTaskOutlinedIcon className="w-[16px] mr-2 text-[#56CDAD]"/>{responsibility}</li>
             ))}
           </ul>

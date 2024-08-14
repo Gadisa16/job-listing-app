@@ -8,6 +8,16 @@ import Link from 'next/link';
 
 const images = [image1, image2, image3, image4];
 
+interface Job {
+  id: string;
+  title: string;
+  company: string;
+  about: {
+    location: string;
+  };
+  description: string;
+}
+
 function getRandomImage() {
   const randomIndex = Math.floor(Math.random() * images.length);
   return images[randomIndex];
